@@ -54,7 +54,7 @@ export default function App() {
         <div className="max-w-3xl mx-auto">
           <div className="relative mb-8 flex justify-center group">
             <div className="absolute inset-0 bg-amber-400 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full"></div>
-            <div className="w-44 h-44 bg-white rounded-full border-4 border-amber-400 flex items-center justify-center shadow-2xl overflow-hidden relative z-10 transform group-hover:rotate-3 transition-transform">
+            <div className="w-44 h-44 bg-white rounded-full border-8 border-amber-400 flex items-center justify-center shadow-2xl overflow-hidden relative z-10 transform group-hover:rotate-3 transition-transform">
                <img src="/src/foto.jpg" alt={namaLengkap} className="w-full h-full object-cover object-top" />
             </div>
           </div>
