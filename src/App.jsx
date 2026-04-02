@@ -23,158 +23,173 @@ export default function App() {
   const fakultas = "Fakultas Vokasi Universitas Brawijaya";
 
   const keahlian = [
-    { name: "MS Office", level: "90%" },
-    { name: "Admin Perkantoran", level: "85%" },
-    { name: "Public Speaking", level: "80%" },
-    { name: "Team Work", level: "95%" },
-    { name: "React & Tailwind", level: "75%" }
+    { name: "Cloud Tech", level: "90%", icon: "☁️" },
+    { name: "Frontend Dev", level: "85%", icon: "💻" },
+    { name: "UI/UX Design", level: "80%", icon: "🎨" },
+    { name: "Data Security", level: "95%", icon: "🔒" },
+    { name: "Office Admin", level: "90%", icon: "📁" }
   ];
 
   const socialMedia = [
-    { name: "GitHub", icon: "🌐", link: "https://github.com/Dhoneew", color: "hover:bg-slate-800" },
-    { name: "LinkedIn", icon: "💼", link: "https://www.linkedin.com/in/Dhoni-Abdul-Rouf", color: "hover:bg-blue-700" },
-    { name: "Instagram", icon: "📸", link: "https://www.instagram.com/dhoni.abrf", color: "hover:bg-pink-600" },
-    { name: "Email", icon: "✉️", link: "mailto:dhonixone@gmail.com", color: "hover:bg-red-500" },
+    { name: "GitHub", icon: "🌐", link: "https://github.com/Dhoneew", color: "hover:shadow-slate-500" },
+    { name: "LinkedIn", icon: "💼", link: "https://www.linkedin.com/in/Dhoni-Abdul-Rouf", color: "hover:shadow-blue-500" },
+    { name: "Instagram", icon: "📸", link: "https://www.instagram.com/dhoni.abrf", color: "hover:shadow-pink-500" },
+    { name: "Email", icon: "✉️", link: "mailto:dhonixone@gmail.com", color: "hover:shadow-red-500" },
   ];
 
   return (
-    <div className={`${darkMode ? 'bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-800'} min-h-screen font-sans transition-all duration-700 overflow-x-hidden`}>
+    <div className={`${darkMode ? 'bg-[#0f172a] text-slate-100' : 'bg-slate-50 text-slate-900'} min-h-screen font-sans transition-all duration-1000 overflow-x-hidden selection:bg-amber-400 selection:text-blue-900`}>
       
-      {/* NAVBAR */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? (darkMode ? 'bg-slate-900/90 py-2 shadow-2xl' : 'bg-blue-950/90 py-2 shadow-2xl') : 'bg-transparent py-5'} backdrop-blur-md text-white`}>
-        <div className="max-w-6xl mx-auto flex justify-between items-center px-8">
-          <h1 className="text-2xl font-black tracking-tighter italic text-amber-400 drop-shadow-lg animate-pulse">DHONI<span className="text-white">.PRO</span></h1>
-          <div className="flex items-center space-x-6 text-xs font-black tracking-widest">
-            {['home', 'tentang', 'keahlian', 'contact'].map((item) => (
-              <button key={item} onClick={() => scrollToSection(item)} className="hover:text-amber-400 transition-all hidden md:block uppercase tracking-tighter">{item}</button>
-            ))}
-            <button 
-              onClick={() => setDarkMode(!darkMode)} 
-              className="bg-amber-400 text-blue-900 p-2 rounded-full shadow-xl hover:rotate-[360deg] transition-all duration-700"
-            >
-              {darkMode ? '☀️' : '🌙'}
-            </button>
+      {/* BACKGROUND MESH GRADIENT COMPLEX */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className={`absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full blur-[120px] opacity-30 animate-pulse ${darkMode ? 'bg-blue-600' : 'bg-blue-300'}`}></div>
+        <div className={`absolute top-[40%] -right-[10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 animate-float ${darkMode ? 'bg-amber-500' : 'bg-amber-200'}`}></div>
+        <div className={`absolute -bottom-[10%] left-[20%] w-[30%] h-[30%] rounded-full blur-[120px] opacity-20 ${darkMode ? 'bg-purple-600' : 'bg-purple-200'}`}></div>
+      </div>
+
+      {/* NAVBAR GLASSMORPHISM */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3' : 'py-6'}`}>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className={`flex justify-between items-center px-8 py-3 rounded-full border border-white/20 backdrop-blur-xl shadow-2xl transition-all ${darkMode ? 'bg-slate-900/40' : 'bg-white/40'}`}>
+            <h1 className="text-2xl font-black tracking-[0.2em] italic text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 drop-shadow-sm">
+              I'am<span className={darkMode ? 'text-white' : 'text-blue-950'}>Dhoni</span>
+            </h1>
+            <div className="flex items-center space-x-8 text-[10px] font-black tracking-widest uppercase">
+              {['home', 'tentang', 'keahlian', 'contact'].map((item) => (
+                <button key={item} onClick={() => scrollToSection(item)} className="hover:text-amber-500 transition-all hidden md:block hover:scale-110">{item}</button>
+              ))}
+              <button 
+                onClick={() => setDarkMode(!darkMode)} 
+                className="p-2 rounded-full border border-white/20 hover:bg-amber-400 transition-all duration-500 shadow-inner"
+              >
+                {darkMode ? '🔆' : '🌙'}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* HERO SECTION - KARTU KUCU ANIMASI */}
-      <header id="home" className={`relative overflow-hidden ${darkMode ? 'bg-slate-900' : 'bg-blue-900'} text-white pt-40 pb-48 text-center px-6`}>
-        
-        {/* ELEMEN KARTUN MELAYANG (DEKORASI) */}
-        <div className="absolute top-20 left-[10%] animate-floating opacity-50 text-6xl">🚀</div>
-        <div className="absolute bottom-20 left-[15%] animate-bounce-slow opacity-50 text-5xl">✨</div>
-        <div className="absolute top-40 right-[10%] animate-floating-delayed opacity-50 text-6xl">💻</div>
-        <div className="absolute bottom-10 right-[15%] animate-bounce-slow opacity-30 text-7xl">🔥</div>
-
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="relative mb-10 flex justify-center">
-            {/* Bingkai Foto Wobble (Goyang Lucu) */}
-            <div className="w-52 h-52 bg-gradient-to-tr from-amber-400 via-yellow-200 to-white rounded-[2rem] p-1.5 shadow-2xl animate-wobble">
-              <div className="w-full h-full bg-white rounded-[1.8rem] overflow-hidden border-4 border-white">
-                <img src="/src/foto.jpg" alt={namaLengkap} className="w-full h-full object-cover object-top hover:scale-125 transition-all duration-700" />
-              </div>
+      {/* HERO SECTION - THE VORTEX */}
+      <header id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6">
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="relative mb-12 inline-block group">
+            {/* Animated Ring Decor */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-amber-500 to-blue-500 rounded-full opacity-30 blur-md animate-spin-slow group-hover:opacity-100 transition duration-1000"></div>
+            <div className="w-56 h-56 relative bg-white/10 backdrop-blur-md rounded-full p-2 border border-white/30 shadow-2xl overflow-hidden animate-morph">
+              <img src="/src/foto.jpg" alt={namaLengkap} className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700" />
             </div>
-            {/* Badge Kucu */}
-            <div className="absolute -bottom-4 right-[30%] bg-amber-400 text-blue-900 px-4 py-1 rounded-full font-black text-xs shadow-lg animate-bounce">
-              HI THERE! 👋
+            {/* Aesthetic Floating Badge */}
+            <div className="absolute top-0 -right-4 bg-amber-400 text-blue-900 px-4 py-1 rounded-full text-[10px] font-black tracking-widest shadow-xl animate-float uppercase border border-white/50">
+              Active Now
             </div>
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-white to-amber-500 mb-4 tracking-tighter">
-            {namaLengkap}
+          <h1 className="text-6xl md:text-9xl font-black mb-6 tracking-tighter leading-none animate-reveal">
+            <span className={`block transition-colors ${darkMode ? 'text-white' : 'text-blue-950'}`}>DHONI ABDUL</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-600 drop-shadow-2xl">RO'UF</span>
           </h1>
-          <p className="text-xl md:text-2xl font-bold tracking-[0.3em] text-amber-200 mb-8 uppercase animate-fade-in">
-             {kelas} <span className="text-white">•</span> {prodi}
-          </p>
-          <div className="flex justify-center gap-4">
-             <button onClick={() => scrollToSection('tentang')} className="bg-amber-400 text-blue-900 px-8 py-3 rounded-2xl font-black hover:scale-110 active:scale-95 transition-all shadow-[0_10px_0_rgb(180,130,0)] hover:shadow-none hover:translate-y-2">SIAPA SAYA?</button>
-             <button onClick={() => scrollToSection('contact')} className="bg-white text-blue-900 px-8 py-3 rounded-2xl font-black hover:scale-110 active:scale-95 transition-all shadow-[0_10px_0_rgb(200,200,200)] hover:shadow-none hover:translate-y-2">HUBUNGI</button>
+          
+          <div className="flex flex-wrap justify-center gap-4 mt-10">
+            <div className="px-6 py-2 rounded-full border border-white/20 backdrop-blur-md bg-white/5 font-bold tracking-widest text-[10px] uppercase">
+              {kelas} • {prodi}
+            </div>
+            <div className="px-6 py-2 rounded-full border border-white/20 backdrop-blur-md bg-white/5 font-bold tracking-widest text-[10px] uppercase">
+              {fakultas}
+            </div>
           </div>
         </div>
       </header>
 
-      {/* TENTANG SAYA - DESKRIPSI LENGKAP (110+ KATA) */}
-      <section id="tentang" className="max-w-5xl mx-auto px-6 py-20 -mt-24 relative z-20">
-        <div className={`${darkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-white/90 border-white'} backdrop-blur-xl p-10 md:p-16 rounded-[3rem] shadow-2xl border transition-all hover:rotate-1`}>
-          <div className="grid md:grid-cols-3 gap-12 items-center">
-            <div className="md:col-span-1 text-center md:text-left">
-                <h2 className="text-5xl font-black text-amber-500 leading-tight">CERITA<br/>SINGKAT.</h2>
-                <div className="w-20 h-3 bg-blue-500 mt-4 rounded-full mx-auto md:mx-0"></div>
+      {/* ABOUT SECTION - COMPLEX GLASS CARD */}
+      <section id="tentang" className="max-w-6xl mx-auto px-6 py-32">
+        <div className={`relative p-1 md:p-1 rounded-[4rem] overflow-hidden transition-all duration-700 ${darkMode ? 'bg-white/5 shadow-white/5' : 'bg-black/5 shadow-black/5'} shadow-2xl`}>
+          <div className={`backdrop-blur-3xl p-10 md:p-20 rounded-[3.8rem] border border-white/20 flex flex-col md:flex-row gap-16 items-center`}>
+            <div className="md:w-1/3 text-center md:text-left relative">
+              <span className="text-amber-500 font-black tracking-[0.5em] text-xs uppercase mb-4 block">Manifesto</span>
+              <h2 className="text-6xl font-black italic tracking-tighter leading-none">THE<br/>STORY.</h2>
+              <div className="w-full h-[1px] bg-gradient-to-r from-amber-500 to-transparent mt-8"></div>
             </div>
-            <div className={`md:col-span-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'} text-lg leading-relaxed space-y-6 text-justify font-medium`}>
+            <div className="md:w-2/3 space-y-8 text-lg font-medium leading-relaxed text-justify opacity-90">
               <p>
-                Halo, perkenalkan saya <span className="font-bold text-amber-500">{namaLengkap}</span>. Saya adalah individu yang disiplin, bertanggung jawab, dan memiliki kemampuan komunikasi yang baik. Saya terbiasa bekerja dalam tim maupun secara mandiri, serta mampu beradaptasi dengan lingkungan kerja yang dinamis dan penuh tantangan. Dengan latar belakang pendidikan di bidang IT di <span className="italic font-semibold">{fakultas}</span>, saya memiliki semangat belajar yang sangat tinggi.
+                Halo, perkenalkan saya <span className="text-amber-500 font-bold">{namaLengkap}</span>. Saya adalah individu yang disiplin, bertanggung jawab, dan memiliki kemampuan komunikasi yang baik. Saya terbiasa bekerja dalam tim maupun secara mandiri, serta mampu beradaptasi dengan lingkungan kerja yang dinamis dan penuh tantangan. Dengan latar belakang pendidikan di bidang IT di <span className="italic font-semibold">{fakultas}</span>, saya memiliki semangat belajar yang sangat tinggi untuk terus mengeksplorasi batas-batas teknologi modern.
               </p>
               <p>
-                Saya memiliki keterampilan dalam menyusun dokumen profesional serta berkomunikasi dengan klien secara efektif. Pengalaman saya dalam organisasi dan kepanitiaan telah melatih kemampuan kepemimpinan, manajemen waktu, dan kerja sama tim yang solid. Selain itu, pengalaman di bidang pelayanan membuat saya terbiasa menghadapi pelanggan dengan sikap ramah dan memberikan solusi maksimal. Saya siap memberikan kontribusi terbaik, berpikir kreatif, dan terus mengembangkan diri di bidang teknologi informasi.
+                Saya memiliki keterampilan dalam menyusun dokumen profesional serta berkomunikasi dengan klien secara efektif. Pengalaman saya dalam organisasi dan kepanitiaan telah melatih kemampuan kepemimpinan, manajemen waktu, dan kerja sama tim yang solid. Selain itu, pengalaman di bidang pelayanan membuat saya terbiasa menghadapi pelanggan dengan sikap ramah dan memberikan solusi maksimal. Saya siap memberikan kontribusi terbaik, berpikir kreatif, dan terus mengembangkan diri di dunia yang serba digital ini.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* KEAHLIAN */}
-      <section id="keahlian" className="max-w-5xl mx-auto px-6 py-24">
-        <h2 className={`text-center text-5xl font-black mb-16 ${darkMode ? 'text-white' : 'text-blue-950'}`}>MY <span className="text-amber-500">POWERS</span></h2>
-        <div className="grid md:grid-cols-2 gap-8">
+      {/* KEAHLIAN - NEOMORPHIC GLASS GRID */}
+      <section id="keahlian" className="max-w-6xl mx-auto px-6 py-32">
+        <div className="text-center mb-20">
+          <h2 className="text-xs font-black tracking-[1em] uppercase mb-4 opacity-50">Competencies</h2>
+          <h3 className="text-5xl font-black italic tracking-tighter uppercase">Power Station.</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {keahlian.map((skill, index) => (
-            <div key={index} className={`${darkMode ? 'bg-slate-800' : 'bg-white'} p-6 rounded-3xl shadow-xl border-4 border-transparent hover:border-amber-400 transition-all group`}>
-              <div className="flex justify-between mb-3">
-                <span className="font-black uppercase tracking-wider">{skill.name}</span>
-                <span className="text-amber-500 font-black">{skill.level}</span>
+            <div key={index} className={`group relative p-8 rounded-[3rem] border border-white/20 transition-all duration-500 backdrop-blur-md hover:-translate-y-4 ${darkMode ? 'bg-white/5 hover:bg-white/10' : 'bg-black/5 hover:bg-black/10'}`}>
+              <div className="text-4xl mb-6 group-hover:scale-125 transition-transform duration-500">{skill.icon}</div>
+              <h4 className="font-black text-[10px] tracking-widest uppercase mb-4">{skill.name}</h4>
+              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                <div className="h-full bg-amber-500 rounded-full animate-progress" style={{ width: skill.level }}></div>
               </div>
-              <div className="w-full bg-slate-200 rounded-full h-4 overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-600 to-amber-400 h-full group-hover:scale-x-110 transition-transform origin-left rounded-full" style={{ width: skill.level }}></div>
-              </div>
+              <span className="text-[10px] font-bold mt-2 block opacity-50">{skill.level}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer id="contact" className={`${darkMode ? 'bg-slate-950' : 'bg-blue-950'} text-white pt-32 pb-12 px-8 relative`}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-7xl font-black text-amber-400 mb-6 opacity-10 tracking-widest">SAY HELLO!</h2>
-            <h3 className="text-4xl font-black -mt-16 relative z-10 animate-bounce">AYO NGOBROL! ☕</h3>
-          </div>
+      {/* FOOTER - THE END OF LINE */}
+      <footer id="contact" className={`relative pt-40 pb-20 px-8 transition-colors ${darkMode ? 'bg-black/40' : 'bg-slate-200/40'} backdrop-blur-3xl`}>
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-[15vw] font-black tracking-tighter opacity-5 leading-none absolute top-10 left-0 w-full select-none pointer-events-none">CONTACT.</h2>
+          <h3 className="text-5xl font-black tracking-tighter relative z-10 mb-20 italic">LET'S VIBE TOGETHER.</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
             {socialMedia.map((socmed, index) => (
               <a key={index} href={socmed.link} target="_blank" rel="noopener noreferrer" 
-                 className={`flex items-center justify-between p-6 rounded-[2rem] border-4 border-white/10 ${socmed.color} hover:translate-y-[-10px] transition-all duration-300 group shadow-2xl`}>
-                <span className="text-4xl group-hover:rotate-12 transition-transform">{socmed.icon}</span>
-                <span className="font-black text-sm uppercase tracking-tighter">{socmed.name}</span>
+                 className={`group p-8 rounded-[2.5rem] border border-white/10 backdrop-blur-xl transition-all duration-500 hover:scale-105 shadow-2xl ${darkMode ? 'bg-white/5' : 'bg-black/5'} ${socmed.color}`}>
+                <div className="text-5xl mb-4 group-hover:rotate-12 transition-transform">{socmed.icon}</div>
+                <span className="text-[10px] font-black tracking-widest uppercase block">{socmed.name}</span>
               </a>
             ))}
           </div>
           
-          <div className="mt-32 pt-8 border-t border-white/5 text-center text-[10px] font-bold text-slate-500 tracking-[0.5em]">
-            MADE WITH ❤️ BY {namaLengkap.toUpperCase()} — 2026
+          <div className="mt-40 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] font-black tracking-[0.5em] opacity-30">
+            <span>© 2026 {namaLengkap.toUpperCase()}</span>
+            <span className="mt-4 md:mt-0 italic">UB VOKASI IT DEPT.</span>
           </div>
         </div>
       </footer>
 
-      {/* ANIMASI KUSTOM */}
+      {/* COMPLEX AESTHETIC ANIMATIONS */}
       <style jsx>{`
-        @keyframes floating {
+        @keyframes float {
           0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-30px) rotate(10deg); }
+          50% { transform: translateY(-40px) rotate(5deg); }
         }
-        @keyframes floating-delayed {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-25px) rotate(-10deg); }
+        @keyframes morph {
+          0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+          50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
         }
-        @keyframes wobble {
-          0%, 100% { border-radius: 2rem; transform: rotate(0); }
-          25% { border-radius: 3rem 2rem 4rem 2rem; transform: rotate(-2deg); }
-          75% { border-radius: 2rem 4rem 2rem 3rem; transform: rotate(2deg); }
+        @keyframes reveal {
+          from { opacity: 0; transform: translateY(50px); filter: blur(10px); }
+          to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
-        .animate-floating { animation: floating 4s ease-in-out infinite; }
-        .animate-floating-delayed { animation: floating-delayed 5s ease-in-out infinite; }
-        .animate-wobble { animation: wobble 6s ease-in-out infinite; }
-        .animate-bounce-slow { animation: bounce 3s infinite; }
+        @keyframes progress {
+          from { width: 0; }
+        }
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-float { animation: float 8s ease-in-out infinite; }
+        .animate-morph { animation: morph 12s ease-in-out infinite; }
+        .animate-reveal { animation: reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-progress { animation: progress 2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-spin-slow { animation: spin-slow 15s linear infinite; }
       `}</style>
 
     </div>
