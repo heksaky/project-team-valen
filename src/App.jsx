@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
-import Profile1 from './pages/profile1';
-import Profile2 from './pages/profile2';
-import Profile3 from './pages/profile3';
+import Valen from './pages/Valen';
+import Dhoni from './pages/Dhoni';
+import Zebe from './pages/Zebe';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile1" element={<Profile1 />} />
-        <Route path="/profile2" element={<Profile2 />} />
-        <Route path="/profile3" element={<Profile3 />} />
+        <Route path="/profile1" element={<Valen />} />
+        <Route path="/profile2" element={<Dhoni />} />
+        <Route path="/profile3" element={<Zebe />} />
       </Routes>
     </Router>
   );
