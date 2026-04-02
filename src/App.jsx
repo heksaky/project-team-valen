@@ -30,7 +30,7 @@ export default function App() {
   ];
 
   return (
-    <div className={`${darkMode ? 'bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-800'} min-h-screen font-sans transition-colors duration-500`}>
+    <div className={`${darkMode ? 'bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-800'} min-h-screen font-sans transition-colors duration-700`}>
       
       {/* NAVBAR */}
       <nav className={`${darkMode ? 'bg-slate-800/80' : 'bg-blue-950/90'} backdrop-blur-md text-white p-4 sticky top-0 z-50 shadow-lg`}>
