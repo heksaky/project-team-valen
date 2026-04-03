@@ -22,12 +22,20 @@ export default function Dhoni() {
   const kelas = "T2G";
   const prodi = "Teknologi Informasi";
   const fakultas = "Fakultas Vokasi Universitas Brawijaya";
+  
+  // BIODATA TAMBAHAN
+  const biodata = [
+    { label: "TTL", value: "Malang, 16 Desember 2006", icon: "🗓️" },
+    { label: "NIM", value: "253140707111116", icon: "🆔" },
+    { label: "Asal Sekolah", value: "SMAS Diponegoro Tumpang", icon: "🏫" },
+    { label: "Domisili", value: "Malang, Jawa Timur", icon: "📍" }
+  ];
 
   const keahlian = [
-    { name: "Business Planning", level: "90%", icon: "☁️" },
+    { name: "Business Planning", level: "90%", icon: "📈" },
     { name: "System Analysis", level: "85%", icon: "💻" },
     { name: "UI/UX Design", level: "80%", icon: "🎨" },
-    { name: "Project Documentation", level: "95%", icon: "🔒" },
+    { name: "Project Documentation", level: "95%", icon: "📄" },
     { name: "Office Admin", level: "90%", icon: "📁" }
   ];
 
@@ -99,16 +107,32 @@ export default function Dhoni() {
         </div>
       </header>
 
-      {/* ABOUT SECTION */}
+      {/* ABOUT SECTION + BIODATA */}
       <section id="tentang" className="max-w-6xl mx-auto px-6 py-32">
         <div className={`relative p-1 md:p-1 rounded-[4rem] overflow-hidden transition-all duration-700 ${darkMode ? 'bg-white/5 shadow-white/5' : 'bg-black/5 shadow-black/5'} shadow-2xl`}>
-          <div className={`backdrop-blur-3xl p-10 md:p-20 rounded-[3.8rem] border border-white/20 flex flex-col md:flex-row gap-16 items-center`}>
-            <div className="md:w-1/3 text-center md:text-left relative">
+          <div className={`backdrop-blur-3xl p-10 md:p-20 rounded-[3.8rem] border border-white/20 flex flex-col lg:flex-row gap-16 items-start`}>
+            
+            <div className="lg:w-1/3 text-center lg:text-left relative">
               <span className="text-amber-500 font-black tracking-[0.5em] text-xs uppercase mb-4 block">Manifesto</span>
               <h2 className="text-6xl font-black italic tracking-tighter leading-none">THE<br/>STORY.</h2>
-              <div className="w-full h-[1px] bg-gradient-to-r from-amber-500 to-transparent mt-8"></div>
+              
+              {/* LIST BIODATA FITTING DESIGN */}
+              <div className="mt-12 space-y-4">
+                {biodata.map((bio, index) => (
+                  <div key={index} className="flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    <span className="text-xl">{bio.icon}</span>
+                    <div className="text-left">
+                      <p className="text-[8px] font-black uppercase tracking-[0.2em] opacity-50">{bio.label}</p>
+                      <p className="text-xs font-bold">{bio.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="w-full h-[1px] bg-gradient-to-r from-amber-500 to-transparent mt-8 hidden lg:block"></div>
             </div>
-            <div className="md:w-2/3 space-y-8 text-lg font-medium leading-relaxed text-justify opacity-90">
+
+            <div className="lg:w-2/3 space-y-8 text-lg font-medium leading-relaxed text-justify opacity-90">
               <p>
                 Halo, perkenalkan saya <span className="text-amber-500 font-bold">{namaLengkap}</span>. Saya adalah individu yang disiplin, bertanggung jawab, dan memiliki kemampuan komunikasi yang baik. Saya terbiasa bekerja dalam tim maupun secara mandiri, serta mampu beradaptasi dengan lingkungan kerja yang dinamis dan penuh tantangan. Dengan latar belakang pendidikan di bidang IT di <span className="italic font-semibold">{fakultas}</span>, saya memiliki semangat belajar yang sangat tinggi untuk terus mengeksplorasi batas-batas teknologi modern.
               </p>
