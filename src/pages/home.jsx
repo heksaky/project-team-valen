@@ -1,104 +1,109 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Home = () => {
-  const teamMembers = [
-    { id: 1, name: "Valen", role: "Lead Developer", path: "/valen", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600" },
-    { id: 2, name: "Dhoni", role: "Visual Designer", path: "/dhoni", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" },
-    { id: 3, name: "Zebe", role: "System Analyst", path: "/zebe", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600" },
-  ];
-
+function App() {
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-blue-500 overflow-hidden font-sans">
-      
-      {/* 1. Background Grain & Floating Text */}
-      <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-      <div className="absolute top-20 -left-10 text-[15rem] font-black text-white/[1] whitespace-nowrap select-none italic">
-        KELOMPOK ALHAMDULILLAH
+    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 selection:bg-blue-500/30 relative overflow-hidden font-sans">
+      {/* Efek Latar Belakang Dekoratif (Disesuaikan untuk Mode Gelap) */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -left-[10%] w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
+        <div className="absolute top-[20%] -right-[10%] w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
+        <div className="absolute -bottom-[10%] left-[20%] w-96 h-96 bg-emerald-600 rounded-full mix-blend-screen filter blur-[100px] opacity-[0.05]"></div>
       </div>
 
-      {/* 2. Navigation */}
-      <nav className="flex justify-between items-center px-10 py-8 relative z-10 border-b border-white/5 backdrop-blur-sm">
-        <div className="text-xl font-black italic tracking-tighter">UNIVERSITAS BRAWIJAYA</div>
-        <div className="hidden md:flex gap-10 text-xs font-bold uppercase tracking-[0.2em] opacity-50">
-          <span>Development</span>
-          <span>Design</span>
-          <span>2026 Edition</span>
-        </div>
-        <button className="text-xs font-bold border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">
-          CONTACT US
-        </button>
-      </nav>
-
-      <main className="relative z-10 max-w-[1400px] mx-auto px-6 py-24">
-        {/* 3. Hero Section - More "Messy" & Professional */}
-        <div className="mb-32 relative">
-          <span className="text-blue-500 font-mono text-sm mb-4 block tracking-tighter">/ WHO WE ARE</span>
-          <h1 className="text-7xl md:text-[10rem] font-bold leading-[0.8] tracking-tighter uppercase italic">
-            Creative <br />
-            <span className="ml-20 md:ml-40 text-transparent stroke-text">Synergy</span>
+      <div className="bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-2xl shadow-black/80 border border-slate-800 p-8 sm:p-10 w-full max-w-md text-center z-10">
+        
+        {/* Bagian Header Dashboard */}
+        <div className="mb-10">
+          <div className="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-blue-900/50 transform rotate-3 hover:rotate-6 transition-transform">
+            <svg className="w-8 h-8 text-white transform -rotate-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h1 className="text-3xl font-extrabold text-slate-50 tracking-tight">
+            Dashboard Tim
           </h1>
-          <p className="mt-10 max-w-md text-gray-400 leading-relaxed text-sm ml-auto border-l border-blue-500 pl-6">
-            Kami bukan sekadar kelompok mahasiswa. Kami adalah kolektif kreatif yang berfokus pada estetika digital dan fungsionalitas kode yang presisi.
+          <p className="text-sm text-slate-400 mt-2 font-medium">
+            Pilih profil anggota tim ROMUSA
           </p>
         </div>
 
-        {/* 4. Asymmetric Profile Section */}
-        <div className="flex flex-col md:flex-row gap-12 items-start justify-center">
-          {teamMembers.map((member, index) => (
-            <Link 
-              key={member.id} 
-              to={member.path}
-              // Membuat posisi kotak tidak sejajar sempurna (asimetris)
-              className={`group relative w-full md:w-1/3 ${index === 1 ? 'md:mt-24' : ''} ${index === 2 ? 'md:mt-12' : ''}`}
-            >
-              <div className="relative overflow-hidden bg-[#111] aspect-[3/4]">
-                {/* Number Overlay */}
-                <span className="absolute top-4 left-4 z-20 font-mono text-4xl opacity-20 group-hover:opacity-100 transition-opacity">
-                  0{index + 1}
-                </span>
-
-                {/* Main Image with Glitch/Scale Effect */}
-                <img 
-                  src={member.image} 
-                  alt={member.name}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-out grayscale hover:grayscale-0"
-                />
-
-                {/* Hover Info Overlay */}
-                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="h-[1px] w-full bg-blue-500 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
-                  <p className="text-xs font-mono text-blue-400 mb-2">{member.role}</p>
-                  <h2 className="text-3xl font-bold italic uppercase">{member.name}</h2>
-                </div>
+        {/* Daftar Tautan Profil */}
+        <div className="space-y-4">
+          
+          <Link
+            to="/fariz"
+            className="group flex items-center justify-between p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                F
               </div>
-
-              {/* Outside Text (Permanent) */}
-              <div className="mt-6 flex justify-between items-end">
-                <div>
-                  <h3 className="text-lg font-bold group-hover:text-blue-500 transition-colors uppercase italic">{member.name}</h3>
-                  <p className="text-[10px] text-gray-500 tracking-widest uppercase">{member.role}</p>
-                </div>
-                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
-                  →
-                </div>
+              <div className="text-left">
+                <span className="block font-bold text-slate-200 group-hover:text-blue-400 transition-colors">Farizqahasan</span>
+                <span className="text-xs text-slate-500 font-medium">Anggota Tim</span>
               </div>
-            </Link>
-          ))}
+            </div>
+            <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+              <svg className="w-4 h-4 text-slate-500 group-hover:text-blue-400 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </Link>
+
+          <Link
+            to="/fahmi"
+            className="group flex items-center justify-between p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                F
+              </div>
+              <div className="text-left">
+                <span className="block font-bold text-slate-200 group-hover:text-emerald-400 transition-colors">Fahmi Ramadhan</span>
+                <span className="text-xs text-slate-500 font-medium">Anggota Tim</span>
+              </div>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+              <svg className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </Link>
+
+          <Link
+            to="/bagas"
+            className="group flex items-center justify-between p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                B
+              </div>
+              <div className="text-left">
+                <span className="block font-bold text-slate-200 group-hover:text-purple-400 transition-colors">Bagas Ade</span>
+                <span className="text-xs text-slate-500 font-medium">Anggota Tim</span>
+              </div>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
+              <svg className="w-4 h-4 text-slate-500 group-hover:text-purple-400 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </Link>
+
         </div>
-      </main>
 
-      {/* CSS For Outline Text */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        .stroke-text {
-          -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-        }
-        .group:hover .stroke-text {
-          -webkit-text-stroke: 1px #3b82f6;
-        }
-      `}} />
+        {/* Footer Card */}
+        <div className="mt-10 pt-6 border-t border-slate-800 flex items-center justify-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+          <p className="text-[11px] text-slate-500 font-extrabold tracking-widest uppercase">
+            Kelompok ROMUSA
+          </p>
+        </div>
+
+      </div>
     </div>
   );
-};
+}
 
-export default Home;
+export default App;

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
-import Valen from './pages/Valen';
-import Dhoni from './pages/Dhoni';
-import Zebe from './pages/Zebe';
+import Valen from './pages/valen';
+import Dhoni from './pages/dhoni';
+import Zebe from './pages/zebe';
 
 function App() {
   return (
