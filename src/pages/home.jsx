@@ -1,109 +1,112 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function App() {
+const Home = () => {
+  const members = [
+    { 
+      name: "Valen", 
+      path: "/profile1", // Sesuaikan dengan Route path="/profile1" di App.jsx
+      role: "Lead Developer", 
+      img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400",
+      desc: "Fokus pada arsitektur kode dan performa aplikasi."
+    },
+    { 
+      name: "Dhoni", 
+      path: "/profile2", // Sesuaikan dengan Route path="/profile2" di App.jsx
+      role: "UI/UX Designer", 
+      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
+      desc: "Ahli dalam menciptakan visual yang memanjakan mata."
+    },
+    { 
+      name: "Zebe", 
+      path: "/profile3", // Sesuaikan dengan Route path="/profile3" di App.jsx
+      role: "System Analyst", 
+      img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
+      desc: "Menangani logika bisnis dan struktur data sistem."
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 selection:bg-blue-500/30 relative overflow-hidden font-sans">
-      {/* Efek Latar Belakang Dekoratif (Disesuaikan untuk Mode Gelap) */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -left-[10%] w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
-        <div className="absolute top-[20%] -right-[10%] w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
-        <div className="absolute -bottom-[10%] left-[20%] w-96 h-96 bg-emerald-600 rounded-full mix-blend-screen filter blur-[100px] opacity-[0.05]"></div>
+    <div className="min-h-screen bg-[#0f1115] text-white selection:bg-cyan-500 font-sans p-6 md:p-12">
+      
+      {/* Dekorasi Background Abstract */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[150px]"></div>
       </div>
 
-      <div className="bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-2xl shadow-black/80 border border-slate-800 p-8 sm:p-10 w-full max-w-md text-center z-10">
-        
-        {/* Bagian Header Dashboard */}
-        <div className="mb-10">
-          <div className="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-blue-900/50 transform rotate-3 hover:rotate-6 transition-transform">
-            <svg className="w-8 h-8 text-white transform -rotate-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Header Section */}
+        <header className="mb-20">
+          <div className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-[0.2em] uppercase border border-cyan-500/30 text-cyan-400 rounded-full">
+            Project Profile 2026
           </div>
-          <h1 className="text-3xl font-extrabold text-slate-50 tracking-tight">
-            Dashboard Tim
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter italic uppercase">
+            Kelompok <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Alhamdulillah</span>
           </h1>
-          <p className="text-sm text-slate-400 mt-2 font-medium">
-            Pilih profil anggota tim ROMUSA
+          <p className="mt-6 text-gray-400 max-w-lg leading-relaxed text-lg">
+            Kolaborasi kreatif mahasiswa Teknologi Informasi dalam membangun solusi digital masa depan.
           </p>
+        </header>
+
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {members.map((member, index) => (
+            <Link 
+              key={index} 
+              to={member.path} // PERUBAHAN DI SINI: Menggunakan member.path
+              className="group relative block overflow-hidden rounded-3xl bg-[#1a1c23] border border-white/5 transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+            >
+              {/* Image with Zoom Effect */}
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <img 
+                  src={member.img} 
+                  alt={member.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1c23] via-transparent to-transparent"></div>
+                
+                {/* Floating Role Badge */}
+                <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/10">
+                  {member.role}
+                </div>
+              </div>
+
+              {/* Content Area */}
+              <div className="p-8">
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-3xl font-bold italic group-hover:text-cyan-400 transition-colors uppercase tracking-tight">
+                    {member.name}
+                  </h2>
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
+                  {member.desc}
+                </p>
+              </div>
+
+              {/* Bottom Glow Line */}
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 transition-all duration-500 group-hover:w-full"></div>
+            </Link>
+          ))}
         </div>
 
-        {/* Daftar Tautan Profil */}
-        <div className="space-y-4">
-          
-          <Link
-            to="/fariz"
-            className="group flex items-center justify-between p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-1"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                F
-              </div>
-              <div className="text-left">
-                <span className="block font-bold text-slate-200 group-hover:text-blue-400 transition-colors">Farizqahasan</span>
-                <span className="text-xs text-slate-500 font-medium">Anggota Tim</span>
-              </div>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-              <svg className="w-4 h-4 text-slate-500 group-hover:text-blue-400 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </Link>
-
-          <Link
-            to="/fahmi"
-            className="group flex items-center justify-between p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 transform hover:-translate-y-1"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
-                F
-              </div>
-              <div className="text-left">
-                <span className="block font-bold text-slate-200 group-hover:text-emerald-400 transition-colors">Fahmi Ramadhan</span>
-                <span className="text-xs text-slate-500 font-medium">Anggota Tim</span>
-              </div>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
-              <svg className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </Link>
-
-          <Link
-            to="/bagas"
-            className="group flex items-center justify-between p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 transform hover:-translate-y-1"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
-                B
-              </div>
-              <div className="text-left">
-                <span className="block font-bold text-slate-200 group-hover:text-purple-400 transition-colors">Bagas Ade</span>
-                <span className="text-xs text-slate-500 font-medium">Anggota Tim</span>
-              </div>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-              <svg className="w-4 h-4 text-slate-500 group-hover:text-purple-400 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </Link>
-
-        </div>
-
-        {/* Footer Card */}
-        <div className="mt-10 pt-6 border-t border-slate-800 flex items-center justify-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-          <p className="text-[11px] text-slate-500 font-extrabold tracking-widest uppercase">
-            Kelompok ROMUSA
-          </p>
-        </div>
-
+        {/* Minimal Footer */}
+        <footer className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 text-xs font-medium tracking-widest uppercase">
+          <p>© 2026 Kelompok Alhamdulillah • Vokasi UB</p>
+          <div className="flex gap-8">
+            <span className="hover:text-cyan-400 cursor-pointer transition-colors">GitHub</span>
+            <span className="hover:text-cyan-400 cursor-pointer transition-colors">Instagram</span>
+          </div>
+        </footer>
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Home;
