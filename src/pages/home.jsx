@@ -21,7 +21,7 @@ const Home = () => {
       name: "Zebe", 
       path: "/profile3", 
       role: "System Analyst", 
-      img: "zevefto.jpg",
+      img: "zebe.jpeg",
       desc: "NIM : 253140707111094."
     }
   ];
