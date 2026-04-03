@@ -24,10 +24,10 @@ export default function Dhoni() {
   const fakultas = "Fakultas Vokasi Universitas Brawijaya";
 
   const keahlian = [
-    { name: "Cloud Tech", level: "90%", icon: "☁️" },
-    { name: "Frontend Dev", level: "85%", icon: "💻" },
+    { name: "Business Planning", level: "90%", icon: "☁️" },
+    { name: "System Analysis", level: "85%", icon: "💻" },
     { name: "UI/UX Design", level: "80%", icon: "🎨" },
-    { name: "Data Security", level: "95%", icon: "🔒" },
+    { name: "Project Documentation", level: "95%", icon: "🔒" },
     { name: "Office Admin", level: "90%", icon: "📁" }
   ];
 
